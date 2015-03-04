@@ -98,7 +98,8 @@ angular.module('todo', ['ionic'])
     }
     $scope.activeTable.guests.push({
       name: guest.name,
-      surname: guest.surname
+      surname: guest.surname,
+      persons_count: guest.persons_count
     });
     $scope.guestModal.hide();
 
@@ -110,6 +111,11 @@ angular.module('todo', ['ionic'])
 
   $scope.removeGuest = function(activeTable, guest) {
     $scope.activeTable.guests.splice($scope.activeTable.guests.indexOf(guest), 1);
+    Tables.save($scope.tables);
+  }
+
+  $scope.removeTable = function(table) {
+    $scope.tables.splice($scope.tables.indexOf(table), 1);
     Tables.save($scope.tables);
   }
 

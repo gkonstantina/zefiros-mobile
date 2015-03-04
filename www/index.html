@@ -40,14 +40,20 @@
       <!-- Left menu -->
       <ion-side-menu side="left">
         <ion-header-bar class="bar-dark">
+          <div class="buttons">
+            <button class="ion-minus-circled button icon button-icon"
+              ng-click="data.showDelete = !data.showDelete; data.showReorder = false">
+            </button>
+          </div>
           <h1 class="title">Τραπέζια</h1>
           <button class="button button-icon ion-plus" ng-click="newTable()">
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          <ion-list>
+          <ion-list show-delete="data.showDelete">
             <ion-item ng-repeat="table in tables" ng-click="selectTable(table, $index)" ng-class="{active: activeTable == table}">
               {{table.title}}
+              <ion-delete-button class="ion-minus-circled" ng-click="removeTable(table)"></ion-delete-button>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -72,6 +78,7 @@
           <label class="item item-input">
             <input type="text" placeholder="Επίθετο" ng-model="guest.surname">
             <input type="text" placeholder="Όνομα" ng-model="guest.name">
+            <input type="text" placeholder="Αριθμός Ατόμων" ng-model="guest.persons_count">
           </label>
         </div>
         <div class="padding">
