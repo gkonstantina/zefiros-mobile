@@ -28,9 +28,10 @@
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          <ion-list>
+          <ion-list show-delete="true">
             <ion-item ng-repeat="guest in activeTable.guests | orderBy: ['guest.surname', 'guest.name']">
               {{guest.surname}} {{guest.name}}
+              <ion-delete-button class="ion-minus-circled" ng-click="removeGuest(acticeTable, guest)"></ion-delete-button>
             </ion-item>
           </ion-list>
         </ion-content>

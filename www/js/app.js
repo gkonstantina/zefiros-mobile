@@ -108,6 +108,11 @@ angular.module('todo', ['ionic'])
     guest.name = "";
   };
 
+  $scope.removeGuest = function(activeTable, guest) {
+    $scope.activeTable.guests.splice($scope.activeTable.guests.indexOf(guest), 1);
+    Tables.save($scope.tables);
+  }
+
   $scope.newGuest = function() {
     $scope.guestModal.show();
   };
